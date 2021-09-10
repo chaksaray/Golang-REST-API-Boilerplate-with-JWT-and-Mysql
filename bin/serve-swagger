@@ -1,0 +1,2 @@
+#!/bin/bash
+swagger serve -F=swagger ./docs/swagger.yaml

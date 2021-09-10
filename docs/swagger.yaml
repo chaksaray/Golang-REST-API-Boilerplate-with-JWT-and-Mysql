@@ -1,0 +1,242 @@
+basePath: /
+consumes:
+    - application/json
+host: localhost
+info:
+    description: |-
+        the purpose of this application is to provide a boilerplate work of a new project
+        that is using go code
+    title: Golang Skeleton API.
+    version: 0.0.1
+produces:
+    - application/json
+schemes:
+    - http
+    - https
+securityDefinitions:
+    api_key:
+        in: header
+        name: Authentication
+        type: apiKey
+swagger: '2.0'
+
+paths:
+    /login:
+        post:
+            description: Login to get token
+            operationId: login
+            parameters:
+                - description: |-
+                      Login and produce token
+                  in: body
+                  name: Body
+                  required: true
+                  schema:
+                      $ref: '#/definitions/PostLogin'
+            responses:
+                '200':
+                    $ref: '#/responses/loginResponse'
+                '400':
+                    $ref: '#/responses/errorValidation'
+            tags:
+                - auth
+    /users:
+        get:
+            description: Return a list of users from the database
+            operationId: listUsers
+            responses:
+                '200':
+                    $ref: '#/responses/usersResponse'
+            tags:
+                - users
+        post:
+            description: Create a new users
+            operationId: createUser
+            parameters:
+                - description: |-
+                      User data structure to Update or Create.
+                      Note: the id field is ignored by update and create operations
+                  in: body
+                  name: Body
+                  required: true
+                  schema:
+                      $ref: '#/definitions/PostUser'
+            responses:
+                '200':
+                    $ref: '#/responses/userResponse'
+                '400':
+                    $ref: '#/responses/errorValidation'
+            tags:
+                - users
+    /users/{id}:
+        put:
+            description: Update a user details
+            operationId: updateUser
+            security:
+                - api_key: []
+            parameters:
+                - description: |-
+                      User data structure to Update or Create.
+                      Note: the id field is ignored by update and create operations
+                  in: body
+                  name: Body
+                  required: true
+                  schema:
+                      $ref: '#/definitions/PostUser'
+                - description: The id of the user for which the operation relates
+                  format: int64
+                  in: path
+                  name: id
+                  required: true
+                  type: integer
+            responses:
+                '200':
+                    $ref: '#/responses/userResponse'
+                '400':
+                    $ref: '#/responses/errorValidation'
+                '401':
+                    $ref: '#/responses/errorUnauthResponse'
+            tags:
+                - users
+        delete:
+            description: Update a user details
+            operationId: deleteUser
+            security:
+                - api_key: []
+            responses:
+                '200':
+                    $ref: '#/responses/genericResponse'
+                '401':
+                    $ref: '#/responses/errorUnauthResponse'
+            tags:
+                - users
+        get:
+            description: Return a list of user from the database
+            operationId: listSingle
+            responses:
+                '200':
+                    $ref: '#/responses/userResponse'
+                '400':
+                    $ref: '#/responses/genericResponse'
+            tags:
+                - users
+definitions:
+    PostLogin:
+        description: Login defines the structure for an API login
+        properties:
+            username:
+                description: the name for this poduct
+                maxLength: 255
+                type: string
+            password:
+                description: the password of created user
+                minLength: 6
+                type: string
+        required:
+            - username
+            - password
+        type: object
+    ResponseLogin:
+        description: Access token
+        properties:
+            token:
+                description: access token
+                type: string
+        type: object
+    AuthError:
+        description: AuthError is a generic error message returned by a server
+        properties:
+            message:
+                type: string
+        type: object
+    GenericMessage:
+        description: GenericMessage is a generic response message returned by a server
+        properties:
+            message:
+                type: string
+        type: object
+    User:
+        description: User defines the structure for an API user
+        properties:
+            id:
+                description: the id for the user
+                format: int64
+                minimum: 1
+                type: integer
+            name:
+                description: the name for this user
+                maxLength: 255
+                type: string
+            username:
+                description: the username for this user
+                maxLength: 255
+                type: string
+            password:
+                description: the username for this user
+                minLength: 6
+                type: string
+            created_at:
+                description: the created at for this user
+                type: string
+            updated_at:
+                description: the updated at for this user
+                type: string
+    PostUser:
+        description: User defines the structure for an API user
+        properties:
+            name:
+                description: the name for this user
+                maxLength: 255
+                type: string
+            username:
+                description: the username for this user
+                maxLength: 255
+                type: string
+            password:
+                description: the username for this user
+                minLength: 6
+                type: string
+        required:
+            - name
+            - username
+            - password
+        type: object
+    ValidationError:
+        description: ValidationError is a collection of validation error messages
+        properties:
+            messages:
+                description: validation error message
+                type: string
+        type: object
+
+responses:
+    errorUnauthResponse:
+        description: Unauthorized error message returned as a string
+        schema:
+            $ref: '#/definitions/AuthError'
+    errorResponse:
+        description: Generic error message returned as a string
+        schema:
+            $ref: '#/definitions/GenericError'
+    errorValidation:
+        description: Validation errors defined as strings
+        schema:
+            $ref: '#/definitions/ValidationError'
+    genericResponse:
+        description: Response representing the access token
+        schema:
+            $ref: '#/definitions/GenericMessage'
+    loginResponse:
+        description: Response representing the access token
+        schema:
+            $ref: '#/definitions/ResponseLogin'
+    userResponse:
+        description: Data structure representing a single user
+        schema:
+            $ref: '#/definitions/User'
+    usersResponse:
+        description: A list of users
+        schema:
+            items:
+                $ref: '#/definitions/User'
+            type: array

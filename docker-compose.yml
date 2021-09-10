@@ -1,0 +1,48 @@
+version: '3'
+services:
+    app:
+        container_name: ${DOCKER_PROJECT_NAME}
+        build: .
+        ports:
+            - 8080:8080
+        restart: on-failure
+        volumes:
+            - .:/usr/src/app
+        depends_on:
+            - mysqldb
+        links:
+            - mysqldb
+            - redis
+        networks:
+            - golangproject
+    mysqldb:
+        image: mysql:8.0
+        container_name: ${DOCKER_PROJECT_NAME}_mysql
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        env_file: .env
+        volumes:
+            - ./mysql:/docker-entrypoint-initdb.d
+        environment:
+            MYSQL_DATABASE: ${DB_NAME}
+            MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_USER: ${DB_USERNAME}
+        ports:
+            - 3306:3306
+        cap_add:
+            - SYS_NICE
+        networks:
+            - golangproject
+
+    redis:
+        container_name: ${DOCKER_PROJECT_NAME}_redis_cache
+        image: redis:alpine
+        ports:
+            - 6379:6379
+        volumes:
+            - rediscache:/data
+volumes:
+    rediscache:
+networks:
+    golangproject:
