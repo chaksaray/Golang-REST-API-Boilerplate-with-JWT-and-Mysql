@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"skeleton_project/app/models"
-	"skeleton_project/config"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/config"
 
 	"github.com/gorilla/mux"
 

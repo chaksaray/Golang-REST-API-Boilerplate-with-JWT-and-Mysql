@@ -4,8 +4,9 @@ import (
 	"encoding/json"
 	"io/ioutil"
 	"net/http"
-	"skeleton_project/app/auth"
-	"skeleton_project/app/models"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/auth"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
 
 	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/bcrypt"

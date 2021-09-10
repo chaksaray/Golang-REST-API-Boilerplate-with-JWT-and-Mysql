@@ -2,8 +2,9 @@ package modeltests
 
 import (
 	"log"
-	"skeleton_project/app/models"
 	"testing"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
 
 	"gopkg.in/go-playground/assert.v1"
 )

@@ -1,6 +1,6 @@
 package seeds
 
-import "skeleton_project/app/models"
+import "github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
 
 var users = []models.User{
 	models.User{

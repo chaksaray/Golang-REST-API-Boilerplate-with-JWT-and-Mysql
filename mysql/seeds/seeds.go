@@ -2,7 +2,8 @@ package seeds
 
 import (
 	"log"
-	"skeleton_project/app/models"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
 
 	"github.com/jinzhu/gorm"
 )

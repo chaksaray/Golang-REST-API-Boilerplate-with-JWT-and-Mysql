@@ -8,10 +8,11 @@ import (
 	"log"
 	"net/http"
 	"net/http/httptest"
-	"skeleton_project/app/controllers"
-	"skeleton_project/app/startup"
-	"skeleton_project/config"
 	"testing"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/controllers"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/startup"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/config"
 
 	"gopkg.in/go-playground/assert.v1"
 )

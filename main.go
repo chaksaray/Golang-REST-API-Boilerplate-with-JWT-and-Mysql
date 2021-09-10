@@ -1,6 +1,6 @@
 package main
 
-import "skeleton_project/app"
+import "github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app"
 
 func main() {
 	app.Run()

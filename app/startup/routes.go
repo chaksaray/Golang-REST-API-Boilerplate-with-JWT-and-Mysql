@@ -2,8 +2,9 @@ package startup
 
 import (
 	"net/http"
-	"skeleton_project/app/controllers"
-	"skeleton_project/app/middlewares"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/controllers"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/middlewares"
 
 	"github.com/jinzhu/gorm"
 )

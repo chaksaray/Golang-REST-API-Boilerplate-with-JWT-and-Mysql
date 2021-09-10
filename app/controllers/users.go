@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"skeleton_project/app/auth"
-	"skeleton_project/app/models"
 	"strconv"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/auth"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
 
 	"github.com/gorilla/mux"
 	"github.com/jinzhu/gorm"

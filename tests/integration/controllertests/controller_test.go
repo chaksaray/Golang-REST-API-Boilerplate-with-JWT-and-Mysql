@@ -4,10 +4,11 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"skeleton_project/app/models"
-	"skeleton_project/app/startup"
-	"skeleton_project/config"
 	"testing"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/models"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/startup"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/config"
 
 	"github.com/jinzhu/gorm"
 	"github.com/joho/godotenv"

@@ -3,9 +3,10 @@ package app
 import (
 	"log"
 	"os"
-	"skeleton_project/app/startup"
-	"skeleton_project/config"
-	"skeleton_project/mysql/seeds"
+
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/app/startup"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/config"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/mysql/seeds"
 
 	"github.com/joho/godotenv"
 )

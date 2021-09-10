@@ -3,7 +3,7 @@ package cache
 import (
 	"fmt"
 
-	"skeleton_project/config"
+	"github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql/config"
 
 	"github.com/go-redis/redis"
 )

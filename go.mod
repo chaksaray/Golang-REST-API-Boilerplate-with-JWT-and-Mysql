@@ -1,4 +1,4 @@
-module skeleton_project
+module github.com/chaksaray/Golang-REST-API-Boilerplate-with-JWT-and-Mysql
 
 go 1.16
 
